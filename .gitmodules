@@ -1,0 +1,9 @@
+[submodule "third_party/async/asyncplusplus"]
+	path = third_party/async/asyncplusplus
+	url = https://github.com/Amanieu/asyncplusplus.git
+[submodule "third_party/cppitertools/cppitertools"]
+	path = third_party/cppitertools/cppitertools
+	url = https://github.com/ryanhaining/cppitertools.git
+[submodule "third_party/fmtlib/fmt"]
+	path = third_party/fmtlib/fmt
+	url = https://github.com/fmtlib/fmt.git
