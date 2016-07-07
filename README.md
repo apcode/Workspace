@@ -7,6 +7,9 @@ to treat the directory as the parent of all your projects. External
 projects should be kept in the third\_party directory. You can have a
 WORKSPACE file per project and pull in repositories into each project.
 
+The tools/ directory is a copy of bazel's tools/cpp files changed to
+compile to c++14 rather than the default c++0x.
+ 
 ## Typical Usage
 
 To create a project you can just add a directory for the project and
