@@ -9,6 +9,10 @@ WORKSPACE file per project and pull in repositories into each project.
 
 The tools/ directory is a copy of bazel's tools/cpp files changed to
 compile to c++14 rather than the default c++0x.
+
+Install submodues too:
+
+    git clone --recursive git@github.com:apcode/Workspace.git
  
 ## Typical Usage
 
