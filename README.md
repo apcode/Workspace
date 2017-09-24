@@ -10,6 +10,21 @@ Example programs using each of the libraries are provided in the
 examples directory. You can also see how to build these in the
 examples/BUILD file.
 
+## Included Repos
+
+The following libraries are included in the WORKSPACE. These are all
+pulled and built automatically from github.
+
+- protobuf - Google's protobuf serialization library.
+- async++ - concurrency framework inspired by MS PPL.
+- gflags - commandline flags library.
+- cppitertools - python itertools in C++.
+- fmtlib - formatting and io library, python format style.
+- glog - Google's logging library
+- gtest - Google's unit test and mock library.
+- json - Modern C++ json library.
+- strings - a few string utilities.
+
 ## Typical Usage
 
 I find using Bazel to build C++ projects the simplest way to build and
@@ -30,21 +45,6 @@ To run, and build if needed:
 To run unit tests for a project (cc_test rules):
 
     bazel test example:gtest
-
-## Included Repos
-
-The following libraries are included in the WORKSPACE. These are all
-pulled and built automatically from github.
-
-- protobuf - Google's protobuf serialization library.
-- async++ - concurrency framework inspired by MS PPL.
-- gflags - commandline flags library.
-- cppitertools - python itertools in C++.
-- fmtlib - formatting and io library, python format style.
-- glog - Google's logging library
-- gtest - Google's unit test and mock library.
-- json - Modern C++ json library.
-- strings - a few string utilities.
 
 ## Adding your own repos
 
