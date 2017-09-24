@@ -3,12 +3,14 @@ package(default_visibility = ["//visibility:public"])
 licenses(["notice"])
 
 cc_library(
-    name = "fmtlib",
+    name = "async",
     srcs = glob([
-        "fmt/fmt/*.cc"
+        "src/*.cpp",
+        "src/*.h",
     ]),
     hdrs = glob([
-        "fmt/fmt/*.h",
+        "include/async++/*.h",
+        "include/*.h"
     ]),
-    includes = ["fmt"],
+    includes = ["include"],
 )

@@ -4,8 +4,9 @@ licenses(["notice"])
 
 cc_library(
     name = "cppitertools",
-    hdrs = glob([
-        "cppitertools/*.hpp",
+    srcs = glob([
+        "*.hpp",
     ]),
-    includes = ["."],
+    hdrs = glob(["internal/*.hpp"]),
+    copts = ["-std=c++14"],
 )

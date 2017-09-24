@@ -1,7 +1,7 @@
 #include <iostream>
 #include "gflags/gflags.h"
 
-DEFINE_string(name, "", "test param");
+DEFINE_string(name, "NOT SET", "test param");
 
 int main(int argc, char *argv[]) {
   gflags::ParseCommandLineFlags(&argc, &argv, true);
