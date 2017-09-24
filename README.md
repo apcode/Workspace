@@ -1,68 +1,65 @@
-# Workspace for bazel projects
+# Workspace for bazel C++ projects
 
 This is a starting workspace for [bazel](http://bazel.io) projects.
-Bazel is designed to have all your source code within one workspace
-directory. The presence of a file called WORKSPACE is enough for bazel
-to treat the directory as the parent of all your projects. External
-projects should be kept in the third\_party directory. You can have a
-WORKSPACE file per project and pull in repositories into each project.
 
-The tools/ directory is a copy of bazel's tools/cpp files changed to
-compile to c++14 rather than the default c++0x.
+You just need to add the WORKSPACE and *.BUILD files that you require
+to your project. This will pull in the git repos and make them
+available to use in your project.
 
-Install submodues too:
+Example programs using each of the libraries are provided in the
+examples directory. You can also see how to build these in the
+examples/BUILD file.
 
-    git clone --recursive git@github.com:apcode/Workspace.git
- 
 ## Typical Usage
 
-To create a project you can just add a directory for the project and
-make it a git repo if you want to retain source control. This git repo
-will ignore all your own directories not in examples/ or third\_party/.
-You will then be able to use any other project and all the third\_party
-libraries in your new project. The code in examples/ shows how to use
-other projects.
+I find using Bazel to build C++ projects the simplest way to build and
+use external projects and libraries.
 
-## Pulling in external repos
+To build all examples (cc_binary and other rules):
 
-If you want to use external repos not in this workspace you have two
-choices. If the external projects don't use bazel to build you will
-have to create your own BUILD file. See
-[Types of external dependencies.](http://www.bazel.io/docs/external.html#types-of-external-dependencies)
+    bazel build examples:all
 
-### Add submodule
-You can add an external project as a submodule. This is then embedded in the workspace. 
+To build specific program:
 
-    git submodule add http://www.github.com/myrepo project_folder
+    bazel build examples:json
+    
+To run, and build if needed:
 
-This is how the third\_party libraries have been added. In some of
-these cases a separate BUILD file was created to make them build with
-bazel.
+    bazel run examples:json
+    
+To run unit tests for a project (cc_test rules):
 
-### Defining a local repository 
+    bazel test example:gtest
 
-You can add a repository to your workspace. Bazel will fetch and build
-this, making it available to your workspace.
+
+## Adding your own repos
+
+You can add a github or local repository to your workspace, in
+addition to the ones already provided. Bazel will fetch and build
+these, making it available to your workspace.
 
 You can add something like the following to the WORKSPACE file:
 
-    local_repository(
-      name = "external-project",
-      path = "/path/to/external-project",
-    )
-
-Or,
-
     git_repository(
-      name = "project_git",
+      name = "repo_name",
       commit = "f3b46d5ce2637f8e72e49a05f6cd2fbf5bc62870",
       remote = "https://github.com/user/project.git",
     )
 
 Or, if you need to define your own BUILD file:
 
-    new_local_repository(
+    new_git_repository(
+      name = "repo_name",
+      remote = "https://github.com/user/project.git"
+      build_file = "project.BUILD",
+    )
+    
+And add a project.BUILD file to build the project.
+
+Alternatively you can include and link to local projects by adding a
+local repository:
+
+    local_repository(
       name = "external-project",
       path = "/path/to/external-project",
-      build_file = "external-project.BUILD",
     )
