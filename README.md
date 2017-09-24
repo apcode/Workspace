@@ -22,7 +22,7 @@ pulled and built automatically from github.
 - fmtlib - formatting and io library, python format style.
 - glog - Google's logging library
 - gtest - Google's unit test and mock library.
-- json - Modern C++ json library.
+- json - modern C++ json library.
 - strings - a few string utilities.
 
 ## Typical Usage
