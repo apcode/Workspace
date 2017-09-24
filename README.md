@@ -27,9 +27,6 @@ pulled and built automatically from github.
 
 ## Typical Usage
 
-I find using Bazel to build C++ projects the simplest way to build and
-use external projects and libraries.
-
 To build all examples (cc_binary and other rules):
 
     bazel build examples:all
@@ -47,6 +44,11 @@ To run unit tests for a project (cc_test rules):
     bazel test example:gtest
 
 ## Adding your own repos
+
+I find using Bazel to build C++ projects the simplest way to build and
+manage dependencies as well as use external projects and libraries in
+your own projects. It just takes a few lines to pull in an external
+repo and use it.
 
 You can add a github or local repository to your workspace, in
 addition to the ones already provided. Bazel will fetch and build
