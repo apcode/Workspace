@@ -64,22 +64,3 @@ cc_binary(
         ":example_cc_proto",
     ]
 )
-
-proto_library(
-    name = "rpc_helloworld_proto",
-    srcs = ["rpc_helloworld.proto"],
-)
-
-cc_proto_library(
-    name = "rpc_helloworld_cc_proto",
-    deps = [":rpc_helloworld_proto"],
-)
-
-cc_binary(
-    name = "rpc_server",
-    srcs = ["rpc_server.cpp"],
-    deps = [
-        ":rpc_helloworld_cc_proto",
-        "@grpc//:grpc",
-    ]
-)
