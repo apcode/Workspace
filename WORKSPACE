@@ -10,6 +10,19 @@ http_archive(
     strip_prefix = "protobuf-b4b0e304be5a68de3d0ee1af9b286f958750f5e4",
 )
 
+http_archive(
+    name = "com_github_nelhage_boost",
+    sha256 = "bc42251e12bc35b03eab2edb6179cc06ca4caf9bf884566a28420253d6e118c3",
+    strip_prefix = "rules_boost-dbfed66073378041cd0ee2a92d75ddd6def612ec",
+    type = "tar.gz",
+    urls = [
+        "https://github.com/nelhage/rules_boost/archive/dbfed66073378041cd0ee2a92d75ddd6def612ec.tar.gz"
+    ],
+)
+
+load("@com_github_nelhage_boost//:boost/boost.bzl", "boost_deps")
+boost_deps()
+
 git_repository(
     name = "antonovvk_bazel_rules",
     remote = "https://github.com/antonovvk/bazel_rules",

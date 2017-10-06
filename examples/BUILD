@@ -5,6 +5,15 @@ cc_binary(
 )
 
 cc_binary(
+    name = "boost",
+    srcs = ["boost.cpp"],
+    deps = [
+        "@boost//:algorithm",
+        "@boost//:format",
+    ]
+)
+
+cc_binary(
     name = "cppitertools",
     srcs = ["cppitertools.cpp"],
     deps = ["@cppitertools//:cppitertools"],
