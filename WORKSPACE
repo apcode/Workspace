@@ -10,19 +10,6 @@ http_archive(
     strip_prefix = "protobuf-b4b0e304be5a68de3d0ee1af9b286f958750f5e4",
 )
 
-http_archive(
-    name = "com_github_nelhage_boost",
-    sha256 = "bc42251e12bc35b03eab2edb6179cc06ca4caf9bf884566a28420253d6e118c3",
-    strip_prefix = "rules_boost-dbfed66073378041cd0ee2a92d75ddd6def612ec",
-    type = "tar.gz",
-    urls = [
-        "https://github.com/nelhage/rules_boost/archive/dbfed66073378041cd0ee2a92d75ddd6def612ec.tar.gz"
-    ],
-)
-
-load("@com_github_nelhage_boost//:boost/boost.bzl", "boost_deps")
-boost_deps()
-
 git_repository(
     name = "antonovvk_bazel_rules",
     remote = "https://github.com/antonovvk/bazel_rules",
@@ -35,6 +22,22 @@ new_git_repository(
     remote = "https://github.com/Amanieu/asyncplusplus.git",
     commit = "22f88fa7f1f3d5548bbeb2862f9ae60b1468273c",
 )
+
+# Selection of useful boost libs - excludes libs already part of C++11
+
+new_git_repository(
+    name = "com_github_boost_algorithm",
+    build_file = "boost_algorithm.BUILD",
+    commit = "554db2f07dcbf65c760d75b559ff2011edf66809",
+    remote = "https://github.com/boostorg/algorithm.git",
+)
+
+bind(
+    name = "boost_algorithm",
+    actual = "@com_github_boost_algorithm//:algorithm",
+)
+
+# End of boost libs
 
 git_repository(
     name = "com_github_gflags_gflags",

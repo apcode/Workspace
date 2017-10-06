@@ -7,10 +7,7 @@ cc_binary(
 cc_binary(
     name = "boost",
     srcs = ["boost.cpp"],
-    deps = [
-        "@boost//:algorithm",
-        "@boost//:format",
-    ]
+    deps = ["@boost_algorithm//:algorithm"]
 )
 
 cc_binary(
